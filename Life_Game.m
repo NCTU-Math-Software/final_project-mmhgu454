@@ -1,78 +1,79 @@
 function Life_Game()
-% µ{¦¡¥Î³~¡G¼ÒÀÀ±d«Â¥Í©R¹CÀ¸ªº¹B§@¼Ò¦¡
-% µ{¦¡input:N¡Bwhich¡B¥i¯à¦³k(³o¨Ç¬O°µ¤°»òªº¦bµ{¦¡¤º¦³¸ÑÄÀ)
-% µ{¦¡output:¥Í©R¹CÀ¸ªºfigure
+% ç¨‹å¼ç”¨é€”ï¼šæ¨¡æ“¬åº·å¨ç”Ÿå‘½éŠæˆ²çš„é‹ä½œæ¨¡å¼
+% ç¨‹å¼input:Nã€whichã€å¯èƒ½æœ‰k(é€™äº›æ˜¯åšä»€éº¼çš„åœ¨ç¨‹å¼å…§æœ‰è§£é‡‹)
+% ç¨‹å¼output:ç”Ÿå‘½éŠæˆ²çš„figure
 %
-    N=input('µe­±½d³ò­n¦h¤j(NxN¡H(«ØÄ³¦b10~100¤§¶¡¡A¤ñ¸ûµÎªA)\n');
-    which=input('§Æ±æÀH¾÷¥Í¦¨(¤U¤@¨B³]©w¥Í¦¨¼Æ)ÁÙ¬O¤â°Ê¿ï¨ú¡H(­YN¤Ó¤j«ØÄ³ÀH¾÷¥Í¦¨)');
+    N=input('ç•«é¢ç¯„åœè¦å¤šå¤§(NxNï¼Ÿ(å»ºè­°åœ¨10~100ä¹‹é–“ï¼Œæ¯”è¼ƒèˆ’æœ)\n');
+    which=input('å¸Œæœ›éš¨æ©Ÿç”Ÿæˆ(ä¸‹ä¸€æ­¥è¨­å®šç”Ÿæˆæ•¸)é‚„æ˜¯æ‰‹å‹•é¸å–ï¼Ÿ(è‹¥Nå¤ªå¤§å»ºè­°éš¨æ©Ÿç”Ÿæˆ)\n...
+                    éš¨æ©Ÿç”Ÿæˆè¼¸å…¥ 1 ï¼Œæ‰‹å‹•é¸å–è¼¸å…¥ 2 ');
     chessboard=255*ones(N,N,3);                                         %
-    checkM=zeros(N,N);                                                  % ³Ì«á§PÂ_¤U¤@­Ó¶¥¬qªº¦U¦ì¸m²Ó­M¦s¬¡»P§_
-    if which==1                                                         % 0¬°¤£ÅÜ¡A-1«hÅÜ¦º¤`¡A1«h¬O´_¬¡
-        k=input(['­n¥Í¦¨´X­ÓÂI¡H(±ÀÂË½d³ò¦b' ...
-            num2str((1/4)*N^2) '~' num2str((1/2)*N^2) '¤§¶¡)\n']);    
-        if k>=N^2;                                                      % ¨S¤°»ò¥Îªº¨¾§b
-            disp('¥X¨Æ¤Fªü§B¡A¦A­«¨Ó¤@¦¸£t')
+    checkM=zeros(N,N);                                                  % æœ€å¾Œåˆ¤æ–·ä¸‹ä¸€å€‹éšæ®µçš„å„ä½ç½®ç´°èƒå­˜æ´»èˆ‡å¦
+    if which==1                                                         % 0ç‚ºä¸è®Šï¼Œ-1å‰‡è®Šæ­»äº¡ï¼Œ1å‰‡æ˜¯å¾©æ´»
+        k=input(['è¦ç”Ÿæˆå¹¾å€‹é»ï¼Ÿ(æ¨è–¦ç¯„åœåœ¨' ...
+            num2str((1/4)*N^2) '~' num2str((1/2)*N^2) 'ä¹‹é–“)\n']);    
+        if k>=N^2;                                                      % æ²’ä»€éº¼ç”¨çš„é˜²å‘†
+            disp('å‡ºäº‹äº†é˜¿ä¼¯ï¼Œå†é‡ä¾†ä¸€æ¬¡ã„…')
             return
         end
-        lives(k,N);                                                     % ÀH¾÷¥Í¦¨caseªº¥Í¦¨¨ç¼Æ
-        image(chessboard);pause(2);                                     % §âªì©l¹Ïprint¥X¨Ó¨Ã¼È°±¨â¬í¬İ²M·¡
+        lives(k,N);                                                     % éš¨æ©Ÿç”Ÿæˆcaseçš„ç”Ÿæˆå‡½æ•¸
+        image(chessboard);pause(2);                                     % æŠŠåˆå§‹åœ–printå‡ºä¾†ä¸¦æš«åœå…©ç§’çœ‹æ¸…æ¥š
     elseif which==2 
-        disp('¶Â¬O¬¡ªº¥Õ¬O¦ºªº¡AÂIÀ»ªº¦a¤èª¬ºA·|ÅÜ¡AÂI¨ä¥LÁä(¦p¥kÁä)µ²§ô')
+        disp('é»‘æ˜¯æ´»çš„ç™½æ˜¯æ­»çš„ï¼Œé»æ“Šçš„åœ°æ–¹ç‹€æ…‹æœƒè®Šï¼Œé»å…¶ä»–éµ(å¦‚å³éµ)çµæŸ')
         BUTTON=1;                                                       
         while (BUTTON==1)
-            image(chessboard);                                          % ©T©w¤@­ÓªÅ¥Õ¹Ïªº¦ì¸mµ¹§AÂI
+            image(chessboard);                                          % å›ºå®šä¸€å€‹ç©ºç™½åœ–çš„ä½ç½®çµ¦ä½ é»
             [X,Y,BUTTON]=ginput(1);
             if (BUTTON==1)
-                pick(round(Y),round(X));                                % pick¨ç¼Æ:§ïÅÜ·í«eÂIªº²Ó­Mªºª¬ºAªº¨ç¼Æ
+                pick(round(Y),round(X));                                % pickå‡½æ•¸:æ”¹è®Šç•¶å‰é»çš„ç´°èƒçš„ç‹€æ…‹çš„å‡½æ•¸
             end         
         end
-        image(chessboard);pause(2);                                     % §âªì©l¹Ïprint¥X¨Ó¨Ã¼È°±¨â¬í¬İ²M·¡
+        image(chessboard);pause(2);                                     % æŠŠåˆå§‹åœ–printå‡ºä¾†ä¸¦æš«åœå…©ç§’çœ‹æ¸…æ¥š
     else
-        disp('¦Y¿ùªF¦è¤F¡A¦A­«¨Ó¤@¦¸£t')                                  % ¨S¤°»ò¥Îªºwhich¨¾§b
+        disp('åƒéŒ¯æ±è¥¿äº†ï¼Œå†é‡ä¾†ä¸€æ¬¡ã„…')                                  % æ²’ä»€éº¼ç”¨çš„whiché˜²å‘†
         return
     end
     change=1;
     counter=1;
-    ite=0;                                          % °ÊºA¥­¿Å®É¤£·|¦Û°Ê°±¡A»İ­n¾a³o­Ó¨ç¼Æ
-    max_ite=2000;                                   % ³Ì¦h¥u¶]¤G¤d¦¸(¬ù2¤ÀÄÁ)
+    ite=0;                                          % å‹•æ…‹å¹³è¡¡æ™‚ä¸æœƒè‡ªå‹•åœï¼Œéœ€è¦é é€™å€‹å‡½æ•¸
+    max_ite=2000;                                   % æœ€å¤šåªè·‘äºŒåƒæ¬¡(ç´„2åˆ†é˜)
     while(change>0)                                 
         change=0;
-        for ii=1:N                                  % ii¡Bjj¬O¨C­Ó²Ó­M
-            for jj=1:N                              % kk¡Bww¬O¨C­Ó²Ó­M©P³ò¤K®æ
-                if chessboard(ii,jj,1)              % ¦ºªº¡A©P³ò­è¦n¤T­Ó¶Â(0)¬¡
+        for ii=1:N                                  % iiã€jjæ˜¯æ¯å€‹ç´°èƒ
+            for jj=1:N                              % kkã€wwæ˜¯æ¯å€‹ç´°èƒå‘¨åœå…«æ ¼
+                if chessboard(ii,jj,1)              % æ­»çš„ï¼Œå‘¨åœå‰›å¥½ä¸‰å€‹é»‘(0)æ´»
                     times=0;                       
                     for kk=ii-1:ii+1
                         for ww=jj-1:jj+1
                             times=times+diffusion(kk,ww);
                         end
                     end
-                    refun(times,ii,jj,false);       % ¦ºªºfalse
-                else                                % ¬¡ªº¡A©P³ò¨â­Ó¶Â©Î¤T­Ó¶Â«h¬¡¡A§_«h¦º
-                    times=-1;                       % ¦Û¤v¬¡ªº¡A¥ı¦©±¼
+                    refun(times,ii,jj,false);       % æ­»çš„false
+                else                                % æ´»çš„ï¼Œå‘¨åœå…©å€‹é»‘æˆ–ä¸‰å€‹é»‘å‰‡æ´»ï¼Œå¦å‰‡æ­»
+                    times=-1;                       % è‡ªå·±æ´»çš„ï¼Œå…ˆæ‰£æ‰
                     for kk=ii-1:ii+1
                         for ww=jj-1:jj+1
                             times=times+diffusion(kk,ww);
                         end
                     end
-                    refun(times,ii,jj,true);       % ¬¡ªºtrue
+                    refun(times,ii,jj,true);       % æ´»çš„true
                 end
             end
         end
-        % outputÀô¸`
-        change=draw(checkM);                        % draw·|¦^¶Ç1/0¡A­Y¬O0¥Nªí¨SªF¦è§ïÅÜ(ÀRºA¥­¿Å¡A¥X°j°é)
-        pause(0.05);                                % ¥@¬É¶V§Ö¡A¤ß«hºC
+        % outputç’°ç¯€
+        change=draw(checkM);                        % drawæœƒå›å‚³1/0ï¼Œè‹¥æ˜¯0ä»£è¡¨æ²’æ±è¥¿æ”¹è®Š(éœæ…‹å¹³è¡¡ï¼Œå‡ºè¿´åœˆ)
+        pause(0.05);                                % ä¸–ç•Œè¶Šå¿«ï¼Œå¿ƒå‰‡æ…¢
         image(chessboard);drawnow
-        checkM=zeros(N,N);                          % Âk¹sÀx¦s§ïÅÜªº°}¦C
-        if ite>=max_ite                             % ¨¾Ãz
-            disp('¶]¤F«Ü¦h¦¸¡A§Ú²q¤w¸g°ÊºA¥­¿Å¤F');
+        checkM=zeros(N,N);                          % æ­¸é›¶å„²å­˜æ”¹è®Šçš„é™£åˆ—
+        if ite>=max_ite                             % é˜²çˆ†
+            disp('è·‘äº†å¾ˆå¤šæ¬¡ï¼Œæˆ‘çŒœå·²ç¶“å‹•æ…‹å¹³è¡¡äº†');
             return;
         end
         ite=ite+1;
     end
-    disp('¨S¤F¡A¤j®a³£¬O¤£°ÊªºÃ­©wºA');
+    disp('æ²’äº†ï¼Œå¤§å®¶éƒ½æ˜¯ä¸å‹•çš„ç©©å®šæ…‹');
     
-    % ¦h­Ó¤º¨ç¼Æ
-    function lives(ite,N)           % ÀH¾÷¬D¬¡¤Hªº¨ç¼Æ
+    % å¤šå€‹å…§å‡½æ•¸
+    function lives(ite,N)           % éš¨æ©ŸæŒ‘æ´»äººçš„å‡½æ•¸
         while (ite>0)               
         row=randi(N); 
         column=randi(N); 
@@ -84,7 +85,7 @@ function Life_Game()
             end
         end
     end
-    function pick(x,y)              % ÂIÀ»¤Á´«¦º¬¡¨ç¼Æ
+    function pick(x,y)              % é»æ“Šåˆ‡æ›æ­»æ´»å‡½æ•¸
         if (chessboard(x,y,1))
             for ii=1:3
                 chessboard(x,y,ii)=0;
@@ -95,14 +96,14 @@ function Life_Game()
             end
         end
     end
-    function deaths=diffusion(x,y)  % §PÂ_³o®æ¬O¤£¬O¶Âªº¡A¥Õªº¬O0¡A¶Âªº¬O1
+    function deaths=diffusion(x,y)  % åˆ¤æ–·é€™æ ¼æ˜¯ä¸æ˜¯é»‘çš„ï¼Œç™½çš„æ˜¯0ï¼Œé»‘çš„æ˜¯1
         if chessboard(module(x),module(y),1)
             deaths=0;
         else
             deaths=1;
         end
     end
-    function after=module(x)      % §â0/N+1´«¦¨N/1
+    function after=module(x)      % æŠŠ0/N+1æ›æˆN/1
         if x==0
             after=N;
         elseif x==N+1
@@ -111,20 +112,20 @@ function Life_Game()
             after=x;
         end
     end
-    function refun(times,x,y,booling)            % ¨M©w³o­Ó²Ó­Mªº¥Í¦º
+    function refun(times,x,y,booling)            % æ±ºå®šé€™å€‹ç´°èƒçš„ç”Ÿæ­»
         if booling
             if (times<=1) || (times>=4)
-                checkM(x,y)=-1;                  % ¥i¥H¦º¹L¥h
+                checkM(x,y)=-1;                  % å¯ä»¥æ­»éå»
             end
         else
             if times==3                          
-                checkM(x,y)=1;                   % ¥i¥H¬¡¹L¨Ó
+                checkM(x,y)=1;                   % å¯ä»¥æ´»éä¾†
             end
         end
     end
-    function change=draw(checkM)   % §â³o¤@½ü³Q·P¬Vªº¤H³£¦b³o¸Ì·P¬V§¹
-        change=0;                       % ¦pªG¦³·sªº¤H³Q·P¬V¡Achange=1
-        for ii=1:N                      % ¥Nªí¤U¤@½üÁÙ¦³¥i¯à¦³¤H³Q·P¬V
+    function change=draw(checkM)   % æŠŠé€™ä¸€è¼ªè¢«æ„ŸæŸ“çš„äººéƒ½åœ¨é€™è£¡æ„ŸæŸ“å®Œ
+        change=0;                       % å¦‚æœæœ‰æ–°çš„äººè¢«æ„ŸæŸ“ï¼Œchange=1
+        for ii=1:N                      % ä»£è¡¨ä¸‹ä¸€è¼ªé‚„æœ‰å¯èƒ½æœ‰äººè¢«æ„ŸæŸ“
             for jj=1:N
                 if checkM(ii,jj)==0
                     continue;
