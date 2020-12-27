@@ -1,5 +1,5 @@
 # Life_Game  
-生命遊戲介紹：https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F  
+[生命遊戲介紹 ( From wiki )](https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F)
 
 懶人包：
 * 黑的是活的，白的是死的，每個細胞會和周圍八個產生互動。 
